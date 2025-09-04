@@ -28,7 +28,7 @@ services:
     environment:
       NODE_ENV: production
       PORT: 5000
-      MONGODB_URI: mongodb://admin:password@mongodb:27017/stableswap-ai?authSource=admin
+      MONGODB_URI: mongodb://${MONGO_ROOT_USERNAME:-admin}:${MONGO_ROOT_PASSWORD:-password}@mongodb:27017/stableswap-ai?authSource=admin
       JWT_SECRET: ${JWT_SECRET}
       JWT_EXPIRES_IN: ${JWT_EXPIRES_IN:-7d}
       AIRSTACK_API_KEY: ${AIRSTACK_API_KEY}
