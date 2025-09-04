@@ -20,12 +20,18 @@ jobs:
         cache: 'npm'
         
     - name: Install dependencies
-      run: npm ci
+      run: |
+        npm ci
+        echo "Dependencies installed successfully"
 
     - name: Build application
-      run: npm run build
+      run: |
+        echo "Starting build process..."
+        npm run build
+        echo "Build completed successfully"
       env:
         NODE_OPTIONS: --max-old-space-size=4096
+        CI: true
         
     - name: Deploy to Vercel (Production)
       if: (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master') && secrets.VERCEL_TOKEN != ''
